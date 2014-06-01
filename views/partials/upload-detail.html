@@ -1,0 +1,12 @@
+<div ng-include="'partials/navbar.html'"></div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Upload <small class="muted">{{upload.uploadId}}</small></h1>
+  </div>
+  <div class="col-sm-12 upload-detail">
+    <ul class="list-unstyled" ng-repeat="(key, value) in upload">
+      <li><strong>{{key}}</strong>: {{value}}</li>
+    </ul>
+  </div>
+</div>

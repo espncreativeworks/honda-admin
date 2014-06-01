@@ -1,0 +1,17 @@
+<div ng-include="'partials/navbar.html'"></div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Uploads</h1>
+  </div>
+  <div class="col-sm-12 uploads">
+    <ul class="list-unstyled" ng-repeat="upload in uploads">
+      <li>
+        <p>Upload: {{upload.uploadId}}</p><p>
+        </p><p>MD5 Checksum: {{upload.md5hash}}</p>
+        <p>Uploaded At: {{upload.uploadedAt}}</p>
+        <p><a class="btn btn-default btn-small" href="/uploads/{{upload.uploadId}}">View details</a></p>
+      </li>
+    </ul>
+  </div>
+</div>
