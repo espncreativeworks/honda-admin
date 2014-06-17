@@ -1,21 +1,18 @@
 <div ng-include="'partials/navbar'"></div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
+  <h1>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
   <p class="lead">
-    <img src="images/b0840d14.yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    Hope this helps with reviewing these uploads.
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <p><a class="btn btn-lg btn-success" ng-href="/uploads">View</a></p>
 </div>
 
 <div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
+  <h3>Featured Uploads</h3>
+  <div ng-include="'partials/upload-list-featured'"></div>
 </div>
 
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>Made with ♥ from the ESPN CreativeWorks team</p>
 </div>

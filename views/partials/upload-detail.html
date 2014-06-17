@@ -1,12 +1,57 @@
 <div ng-include="'partials/navbar.html'"></div>
 
 <div class="row">
+
   <div class="col-sm-12">
-    <h1>Upload <small class="muted">{{upload.uploadId}}</small></h1>
+    <ol class="breadcrumb">
+      <li><a ng-href="/">Home</a></li>
+      <li><a ng-href="/uploads" class="active">Uploads</a></li>
+      <li><a ng-href="/uploads/{{upload.uploadId}}" class="active">{{upload.uploadId}}</a></li>
+    </ol>
+  </div>
+
+  <div class="col-sm-12">
+    <h1>
+      Upload by <small class="muted">{{upload.username}}</small>
+      <a ng-href="" class="favorite pull-right" role="button" ng-click="toggleFeatured(upload)">
+        <span class="glyphicon" ng-class="{ &quot;glyphicon-star&quot;: upload.featured, &quot;glyphicon-star-empty&quot;: !upload.featured }"></span>
+      </a>
+    </h1>
   </div>
   <div class="col-sm-12 upload-detail">
-    <ul class="list-unstyled" ng-repeat="(key, value) in upload">
-      <li><strong>{{key}}</strong>: {{value}}</li>
-    </ul>
+    <div class="video-container">
+      <video class="video-player center-block" id="{{upload.uploadId}}" controls="" preload="meta">
+        <source type="{{video.mime}}" ng-src="{{video.url}}" ng-repeat="video in upload.videos"></source>
+      </video>
+    </div>
+    <div class="row thumbnails-container">
+      <div class="col-sm-12">
+        <h4>Thumbnails</h4>
+      </div>
+      <div class="col-sm-6 col-md-4" ng-repeat="thumbnail in upload.thumbnails">
+        <div class="thumbnail">
+          <img ng-src="{{thumbnail.url}}">
+          <div class="caption">
+            <p class="text-right">{{thumbnail.thumb_index + 1}} of {{upload.thumbnails.length}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row meta-container">
+      <div class="col-sm-12">
+        <dl class="dl-horiztonal">
+          <dt>Username</dt><dd>{{upload.username}}</dd>
+          <dt>Description</dt><dd>{{upload.description}}</dd>
+          <dt>Uploaded At</dt><dd>{{upload.uploadedAt.toLocaleString()}}</dd>
+        </dl>
+      </div>
+    </div>
+    <!--
+    <div class="row map-container">
+      <div class="col-sm-12">
+        <google-map center="map.center" zoom="map.zoom"></google-map>
+      </div>
+    </div>
+    -->
   </div>
 </div>

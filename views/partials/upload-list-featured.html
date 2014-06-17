@@ -1,0 +1,11 @@
+<ul class="media-list" ng-repeat="upload in uploads">
+  <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
+    <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
+      <img class="media-object" ng-src="{{upload.thumbnails[0].url}}">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><a href="/uploads/user/{{upload.userId}}" title="View Uploads By {{upload.username}}">{{upload.username}}</a></h4>
+      <p class="media-text upload-description">{{upload.description}} <a href="/uploads/{{upload.uploadId}}" class="view-detail-link" title="View Detail">View Detail &raquo;</a></p>
+    </div>
+  </li>
+</ul>

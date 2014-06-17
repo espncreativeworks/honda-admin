@@ -1,0 +1,39 @@
+<div ng-include="'partials/navbar.html'"></div>
+
+<div class="row">
+
+  <div class="col-sm-12">
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/uploads">Uploads</a></li>
+      <li><a href="/uploads/user/{{uploads[0].userId}}" class="active">{{uploads[0].username}}</a></li>
+    </ol>
+  </div>
+
+  <div class="col-sm-12">
+    <h1>Uploads By {{uploads[0].username}}</h1>
+  </div>
+
+  <div class="col-sm-12 uploads">
+
+    <div class="paging-container">
+      <ul class="pager">
+        <li><a ng-href="/uploads?page={{page-1 > 0 ? page-1 : 1}}&rpp={{rpp}}">Previous</a></li>
+        <li><a ng-href="/uploads?page={{(page*1)+1}}&rpp={{rpp}}">Next</a></li>
+      </ul>
+    </div>
+
+    <ul class="media-list" ng-repeat="upload in uploads">
+      <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
+        <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
+          <img class="media-object" src="{{upload.thumbnails[0].url}}">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><a href="/uploads/user/{{upload.userId}}" title="View Uploads By {{upload.username}}">{{upload.username}}</a></h4>
+          <p class="media-text upload-description">{{upload.description}} <a href="/uploads/{{upload.uploadId}}" class="view-detail-link" title="View Detail">View Detail &raquo;</a></p>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>
