@@ -2,36 +2,104 @@
 
 <div class="row">
 
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     <ol class="breadcrumb">
       <li><a ng-href="/">Home</a></li>
       <li><a ng-href="/uploads" class="active">Uploads</a></li>
     </ol>
   </div>
 
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     <h1>Uploads</h1>
   </div>
-  <div class="col-sm-12 uploads">
+  <div class="col-xs-12 uploads">
 
-    <div class="paging-container">
-      <ul class="pager">
-        <li><a ng-href="/uploads?page={{page-1 > 0 ? page-1 : 1}}&rpp={{rpp}}">Previous</a></li>
-        <li><a ng-href="/uploads?page={{(page*1)+1}}&rpp={{rpp}}">Next</a></li>
-      </ul>
+    <div class="row controls-container">
+
+      <div class="col-xs-12">
+
+        <div class="row">
+
+          <div class="col-xs-6">
+            <h5>Start Date</h5>
+            <div class="filter-container control-container input-group" ng-controller="DatePickerCtrl">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" ng-change="startAt(dt)" is-open="opened" min-date="minDate" max-date="maxDate" show-weeks="showWeeks" datepicker-options="dateOptions" ng-required="false" close-text="Done">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-xs-6">
+            <h5>End Date</h5>
+            <div class="filter-container control-container input-group" ng-controller="DatePickerCtrl">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" ng-change="endAt(dt)" is-open="opened" min-date="minDate" max-date="maxDate" show-weeks="showWeeks" datepicker-options="dateOptions" ng-required="false" close-text="Done">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6 col-xs-12">
+
+        <div class="paging-container control-container">
+          <ul class="pager">
+            <li><a ng-href="/uploads?page={{page-1 > 0 ? page-1 : 1}}&rpp={{rpp}}&duration={{duration}}&sd={{startDate}}&ed={{endDate}}">Previous</a></li>
+            <li><a ng-href="/uploads?page={{(page*1)+1}}&rpp={{rpp}}&duration={{duration}}&sd={{startDate}}&ed={{endDate}}">Next</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="col-md-6 hidden-xs">
+
+        <div class="rpp-control-containter control-container">
+          <div class="btn-group btn-group-sm">
+            <a class="btn btn-default" title="Limit to 10 Uploads" ng-href="/uploads?page={{page}}&rpp=10&duration={{duration}}">10</a>
+            <a class="btn btn-default" title="Limit to 25 Uploads" ng-href="/uploads?page={{page}}&rpp=25&duration={{duration}}">25</a>
+            <a class="btn btn-default" title="Limit to 50 Uploads" ng-href="/uploads?page={{page}}&rpp=50&duration={{duration}}">50</a>
+            <a class="btn btn-default" title="Limit to 100 Uploads" ng-href="/uploads?page={{page}}&rpp=100&duration={{duration}}">100</a>
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
-    <ul class="media-list" ng-repeat="upload in uploads">
-      <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
-        <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
-          <img class="media-object" ng-src="{{upload.thumbnails[0].url}}">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading"><a ng-href="/uploads/user/{{upload.userId}}" title="View Uploads By {{upload.username}}">{{upload.username}}</a></h4>
-          <p class="media-text upload-description">{{upload.description}} <a ng-href="/uploads/{{upload.uploadId}}" class="view-detail-link" title="View Detail">View Detail &raquo;</a></p>
+    <div class="row results">
+      <div class="col-xs-12">
+        <ul class="media-list" ng-repeat="upload in uploads">
+          <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
+            <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
+              <img class="media-object" ng-src="{{upload.thumbnails[0].url}}">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><a ng-href="/uploads/user/{{upload.userId}}" title="View Uploads By {{upload.username}}">{{upload.username}}</a></h4>
+              <p class="media-text upload-description">{{upload.description}} <a ng-href="/uploads/{{upload.uploadId}}" class="view-detail-link" title="View Detail">View Detail &raquo;</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row controls-container controls-footer">
+      <div class="col-xs-12">
+
+        <div class="paging-container">
+          <ul class="pager">
+            <li><a ng-href="/uploads?page={{page-1 > 0 ? page-1 : 1}}&rpp={{rpp}}&duration={{duration}}&sd={{startDate}}&ed={{endDate}}">Previous</a></li>
+            <li><a ng-href="/uploads?page={{(page*1)+1}}&rpp={{rpp}}&duration={{duration}}&sd={{startDate}}&ed={{endDate}}">Next</a></li>
+          </ul>
         </div>
-      </li>
-    </ul>
+
+      </div>
+    </div>
 
   </div>
 </div>
+
+<div ng-include="'partials/footer'"></div>

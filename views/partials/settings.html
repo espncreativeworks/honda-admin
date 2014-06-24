@@ -1,16 +1,16 @@
 <div ng-include="'partials/navbar.html'"></div>
 
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     <h1>Change Password</h1>
   </div>
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     <form class="form" name="form" ng-submit="changePassword(form)" novalidate="">
-    	
+
       <div class="form-group">
         <label>Current Password</label>
 
-        <input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error="">    
+        <input type="password" name="password" class="form-control" ng-model="user.oldPassword" mongoose-error="">
         <p class="help-block" ng-show="form.password.$error.mongoose">
             {{ errors.other }}
         </p>
