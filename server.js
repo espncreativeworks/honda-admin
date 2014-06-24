@@ -1,7 +1,6 @@
 'use strict';
 
 var express = require('express'),
-    hbs = require('express-hbs'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose');
@@ -36,15 +35,6 @@ var passport = require('./lib/config/passport');
 var app = express();
 require('./lib/config/express')(app);
 require('./lib/routes')(app);
-
-// Configure server-side templating
-// Use `.hbs` for extensions and find partials in `views/partials`.
-app.engine('hbs', hbs.express3({
-  partialsDir: __dirname + '/lib/views/partials',
-  extname: 'hbs'
-}));
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/lib/views');
 
 // Start server
 app.listen(config.port, config.ip, function () {
