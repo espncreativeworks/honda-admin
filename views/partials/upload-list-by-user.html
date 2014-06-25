@@ -26,7 +26,7 @@
     <ul class="media-list" ng-repeat="upload in uploads">
       <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
         <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
-          <img class="media-object" src="{{upload.thumbnails[0].url}}">
+          <img class="media-object" src="{{upload.thumbnails[0].ssl_url}}">
         </a>
         <div class="media-body">
           <h4 class="media-heading"><a href="/uploads/user/{{upload.userId}}" title="View Uploads By {{upload.username}}">{{upload.username}}</a></h4>
