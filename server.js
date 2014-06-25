@@ -1,6 +1,7 @@
 'use strict';
 
-var express = require('express'),
+var newrelic = require('newrelic'),
+    express = require('express'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose');
