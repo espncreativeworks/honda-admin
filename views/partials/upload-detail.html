@@ -1,6 +1,6 @@
 <div ng-include="'partials/navbar.html'"></div>
 
-<div class="row">
+<div class="row" ng-controller="UploadDetailCtrl">
 
   <div class="col-xs-12">
     <ol class="breadcrumb">
@@ -10,14 +10,27 @@
     </ol>
   </div>
 
-  <div class="col-xs-12">
-    <h1>
-      Upload by <small class="muted">{{upload.username}}</small>
-      <a ng-href="" class="favorite pull-right" role="button" ng-click="toggleFeatured(upload)">
-        <span class="glyphicon" ng-class="{ &quot;glyphicon-star&quot;: upload.featured, &quot;glyphicon-star-empty&quot;: !upload.featured }"></span>
-      </a>
-    </h1>
+  <div class="col-xs-12 col-sm-7 title-container">
+    <h1 class="title">Upload by <small class="muted">{{upload.username}}</small></h1>
   </div>
+
+  <div class="col-xs-12 col-sm-5 controls-container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="switch-container control-container">
+          <input bs-switch="" ng-model="isSelected" type="checkbox" switch-active="{{ isActive }}" switch-on-text="{{ onText }}" switch-off-text="{{ offText }}" switch-on-color="{{ onColor }}" switch-off-color="{{ offColor }}" switch-animate="{{ animate }}" switch-size="{{ size }}" switch-label="{{ label }}" switch-icon="{{ icon }}">
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="favorite-container control-container">
+          <a ng-href="" class="favorite pull-right" role="button" ng-click="toggleFeatured(upload)">
+            <span class="glyphicon" ng-class="{ &quot;glyphicon-star&quot;: upload.featured, &quot;glyphicon-star-empty&quot;: !upload.featured }"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="col-xs-12 upload-detail">
     <div class="video-container">
       <video class="video-player center-block" id="{{upload.uploadId}}" controls="" preload="meta">
