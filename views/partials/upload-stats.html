@@ -1,0 +1,39 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="row stats" ng-controller="UploadStats">
+  <div class="col-xs-12">
+    <div class="stat-container primary">
+      <h3 class="stat-label text-center">Total Uploads</h3>
+      <div class="stat total text-center">{{total}}</div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="stat-container">
+      <h3 class="stat-label text-center">Today</h3>
+      <div class="stat daily text-center">{{daily}}</div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="stat-container">
+      <h3 class="stat-label text-center">Weekly</h3>
+      <div class="stat weekly text-center">{{weekly}}</div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="stat-container">
+      <h3 class="stat-label text-center">Monthly</h3>
+      <div class="stat monthly text-center">{{monthly}}</div>
+    </div>
+  </div>
+  <div class="hidden-xs col-sm-12 visualization-container">
+    <div class="row control-container">
+      <label class="col-sm-3 col-sm-offset-6 control-label text-right">Chart Type</label>
+      <div class="col-sm-3">
+        <select ng-options="r for r in renderers" ng-model="renderer" class="control pull-right">
+      </div>
+    </div>
+    <rickshaw-chart data="chartData" renderer="renderer" width="700" height="500" name="Uploads" color="steelblue"></rickshaw-chart>
+  </div>
+</div>
+
+<div ng-include="'partials/footer'"></div>
