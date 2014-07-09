@@ -25,14 +25,18 @@
       <div class="stat monthly text-center">{{monthly}}</div>
     </div>
   </div>
-  <div class="hidden-xs col-sm-12 visualization-container">
+  <div class="hidden-xs col-sm-12">
     <div class="row control-container">
       <label class="col-sm-3 col-sm-offset-6 control-label text-right">Chart Type</label>
       <div class="col-sm-3">
         <select ng-options="r for r in renderers" ng-model="renderer" class="control pull-right">
       </div>
     </div>
-    <rickshaw-chart data="chartData" renderer="renderer" width="700" height="500" color="steelblue"></rickshaw-chart>
+    <div class="row visualization-container">
+      <div class="col-sm-12">
+        <rickshaw-chart data="chartData" renderer="renderer" width="700" height="500" color="steelblue"></rickshaw-chart>
+      </div>
+    </div>
   </div>
 </div>
 
