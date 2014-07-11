@@ -14,16 +14,23 @@
     <h1 class="title">Upload by <small class="muted">{{upload.username}}</small></h1>
   </div>
 
-  <div class="col-xs-12 col-sm-5 controls-container">
+  <div class="col-xs-12 controls-container">
     <div class="row">
-      <div class="col-xs-6">
-        <div class="switch-container control-container">
+      <div class="col-xs-4">
+        <div class="download-container control-container text-center">
+          <a ng-href="/api/uploads/{{upload.uploadId}}/download" class="download" role="button" target="_self">
+            <span class="glyphicon glyphicon-download-alt"></span>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="switch-container control-container text-center">
           <input bs-switch="" ng-model="isSelected" type="checkbox" switch-active="{{ isActive }}" switch-on-text="{{ onText }}" switch-off-text="{{ offText }}" switch-on-color="{{ onColor }}" switch-off-color="{{ offColor }}" switch-animate="{{ animate }}" switch-size="{{ size }}" switch-label="{{ label }}" switch-icon="{{ icon }}">
         </div>
       </div>
-      <div class="col-xs-6">
-        <div class="favorite-container control-container">
-          <a ng-href="" class="favorite pull-right" role="button" ng-click="toggleFeatured(upload)">
+      <div class="col-xs-4">
+        <div class="favorite-container control-container text-center">
+          <a ng-href="" class="favorite" role="button" ng-click="toggleFeatured(upload)">
             <span class="glyphicon" ng-class="{ &quot;glyphicon-star&quot;: upload.featured, &quot;glyphicon-star-empty&quot;: !upload.featured }"></span>
           </a>
         </div>
