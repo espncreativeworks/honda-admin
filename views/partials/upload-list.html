@@ -72,8 +72,8 @@
 
     <div class="row results">
       <div class="col-xs-12">
-        <ul class="media-list" ng-repeat="upload in uploads">
-          <li class="media" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
+        <ul class="media-list">
+          <li class="media" ng-repeat="upload in uploads" data-upload-id="{{upload.uploadId}}" data-upload-username="{{upload.username}}" data-upload-created-at="{{upload.uploadedAt}}">
             <a class="pull-left" href="/uploads/{{upload.uploadId}}" title="View Upload {{upload.uploadId}}">
               <img class="media-object" ng-src="{{upload.thumbnails[0].ssl_url}}">
             </a>
